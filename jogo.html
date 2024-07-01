@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentação de Foto com Rotação</title>
+    <style>
+        /* Estilos para o corpo da página */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color:  #f4c4a4;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilos para o contêiner da foto */
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilos para a foto */
+        #foto {
+            max-width: 50%;
+            max-height: 50%;
+            transition: transform 0.3s ease; /* Adiciona uma transição suave ao mover a foto */
+        }
+
+        /* Estilos para o texto informativo */
+        #texto-informativo {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- Foto a ser movida -->
+        <img id="foto1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTPmN3_ldcyJ3SFaiJF-KH6nCyE5lXRbXN2ELZt8EROwmZPXfWJFcDDGvHbHO6N02_144&usqp=CAU" alt="Foto"> 
+        <img id="foto2" src="https://i.pinimg.com/736x/be/66/da/be66da82f4face798ab0c4dcb347ba5a.jpg" alt="Foto">
+    </div>
+
+    <div id="texto-informativo">
+        Pressione 'A' para mover para a esquerda<br>
+        Pressione 'D' para mover para a direita<br>
+        Pressione 'W' para mover para cima<br>
+        Pressione 'S' para mover para baixo
+    </div>
+
+    <script>
+        // Seleciona a foto e define as variáveis de posição e rotação
+        var foto = document.getElementById("foto1"); 
+        var foto = document.getElementById("foto2");
+        var posicaoHorizontal1 = 0;
+        var posicaoVertical1 = 0;
+        var angulo1 = 0;
+
+        var posicaoHorizontal2 = 0;
+        var posicaoVertical2 = 0;
+        var angulo2 = 0;
+
+        // Event listener para detectar quando uma tecla é pressionada
+        document.addEventListener("keydown", function(event) {
+            // Se a tecla pressionada for 'A', move e gira para a esquerda
+            if (event.key === "a" || event.key === "A") {
+                posicaoHorizontal1 -= 10; // Ajuste a quantidade de pixels que a foto vai se mover para a esquerda
+                angulo1 -= 10; // Ajuste o ângulo de rotação
+            }
+            // Se a tecla pressionada for 'D', move e gira para a direita
+            else if (event.key === "d" || event.key === "D") {
+                posicaoHorizontal1 += 10; // Ajuste a quantidade de pixels que a foto vai se mover para a direita
+                angulo1 += 10; // Ajuste o ângulo de rotação
+            }
+
+            // Aplica transformações de movimento e rotação à imagem
+            foto.style.transform = `translate(${posicaoHorizontal1}px, ${posicaoVertical1}px) rotate(${angulo1}deg)`;
+
+            if(posicaoHorizontal1 > 400){
+                alert("gol da esquerda") 
+            if(posicaoHorizontal1 < -400){
+                alert("gol da direita")
+                
+                posicaoHorizontal1 = 0;
+            }
+        });
+
+
+
+
+
+
+
+        // Event listener para detectar quando uma tecla é pressionada foto2
+        document.addEventListener("keydown", function(event) {
+            // Se a tecla pressionada for 'B', move e gira para a esquerda
+            if (event.key === "b" || event.key === "B") {
+                posicaoHorizontal2 -= 10; // Ajuste a quantidade de pixels que a foto vai se mover para a esquerda
+                angulo2 -= 10; // Ajuste o ângulo de rotação
+            }
+            // Se a tecla pressionada for 'M', move e gira para a direita
+            else if (event.key === "m" || event.key === "M") {
+                posicaoHorizontal2 += 10; // Ajuste a quantidade de pixels que a foto vai se mover para a direita
+                angulo2 += 10; // Ajuste o ângulo de rotação // Se a tecla pressionada for 'M', move e gira para a direita
+          }
+            // Se a tecla pressionada for 'J', move e gira para cima
+            else if (event.key === "j" || event.key === "J") {
+                  posicaoVertical2 -= 10; // Ajuste a quantidade de pixels que a foto vai se mover para cima
+                angulo2 -= 10; // Ajuste o ângulo de rotação // Se a tecla pressionada for 'J'
+            
+           } 
+            // Se a tecla pressionada for 'N', move e gira para baixo
+            else if (event.key === "n" || event.key === "N") {
+                 posicaoVertical2 += 10; // Ajuste a quantidade de pixels que a foto vai se mover para baixo
+                angulo2 += 10; // Ajuste o ângulo de rotação
+        }
+
+            // Aplica transformações de movimento e rotação à imagem
+            foto2.style.transform = `translate(${posicaoHorizontal2}px, ${posicaoVertical2}px) rotate(${angulo2}deg)`;
+
+            if(posicaoHorizontal2 > 400){
+                alert("gol da esquerda")  
+          }
+            if(posicaoHorizontal2 < -400){
+                alert("gol da direita")
+
+                posicaoHorizontal2 = 0;
+            }
+            
+        });
+    </script>
+</body>
+</html>
